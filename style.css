@@ -28,7 +28,7 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
     padding: 25px;
-    /* height: 600px; */
+   
 }
 button{
     height: 100px;
@@ -49,4 +49,29 @@ button:hover{
 }
 .operator:hover{
     background-color: #ff8533;
+
+}
+@media (max-width: 480px) {
+
+  #calculator {
+    max-width: 90%;       
+    border-radius: 10px;
+  }
+
+  #display {
+    padding: 15px;
+    font-size: 3rem;      
+  }
+
+  #keys {
+    gap: 8px;
+    padding: 15px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  button {
+    height: 70px;        
+    width: 70px;
+    font-size: 2rem;
+  }
 }
