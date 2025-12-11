@@ -7,9 +7,9 @@ function append(event) {
   let ele = event.target.innerText;
   display.value = display.value + ele;
   if (ele == ".") {
-    event.target.disabled = true;
+   document.querySelector("#dot").disabled = true;
   } else if (ele == "+" || ele == "-" || ele == "*" || ele == "/") {
-    document.querySelector("#dot").disabled = "true";
+    document.querySelector("#dot").disabled = false;
   }
 }
 
@@ -67,4 +67,3 @@ btns.forEach((button) => {
 
 document.querySelector(".clear").addEventListener("click", clearDisplay);
 document.querySelector(".equal").addEventListener("click", calculate);
-
