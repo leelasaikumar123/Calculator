@@ -1,16 +1,25 @@
 let eve;
 const display = document.querySelector("#display");
 function append(event) {
+
   let ele = event.target.innerText;
   display.value = display.value + ele;
+
+if(ele=="."){
+  event.target.removeEventListener("click",append);
+}
+else if(ele =="+" || ele =="-" || ele == "*" || ele == "/"){
+  document.querySelector("#dot").addEventListener("click",append);
+}
 }   
 function clearDisplay() {
   display.value = "";
-  document.querySelectorAll(".btns");
+ let btns= document.querySelectorAll(".btns");
   btns.forEach((button) => {
     button.addEventListener("click", append);
   });
   document.querySelector(".equal").addEventListener("click", calculate);
+  document.querySelector("#dot").addEventListener("click",append);
 }
 function calculate() {
   let s = display.value;
@@ -21,7 +30,7 @@ function calculate() {
     s[s.length - 1] === "/"
   ) {
     display.value = "Error";
-    document.querySelectorAll(".btns");
+  let btns=document.querySelectorAll(".btns");
     btns.forEach((button) => {
       button.removeEventListener("click", append);
     });
@@ -29,6 +38,7 @@ function calculate() {
   } else {
     display.value = eval(display.value);
   }
+  document.querySelector("#dot").addEventListener("click",append);
 }
 
 let btns = document.querySelectorAll(".btns");
