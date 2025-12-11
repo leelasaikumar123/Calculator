@@ -1,17 +1,20 @@
-let eve;
 const display = document.querySelector("#display");
-function append(event) {
 
+
+//Adding the Button Value
+function append(event) {
   let ele = event.target.innerText;
   display.value = display.value + ele;
-
 if(ele=="."){
   event.target.removeEventListener("click",append);
 }
 else if(ele =="+" || ele =="-" || ele == "*" || ele == "/"){
   document.querySelector("#dot").addEventListener("click",append);
 }
-}   
+}  
+
+
+//Claring the Screen
 function clearDisplay() {
   display.value = "";
  let btns= document.querySelectorAll(".btns");
@@ -21,6 +24,11 @@ function clearDisplay() {
   document.querySelector(".equal").addEventListener("click", calculate);
   document.querySelector("#dot").addEventListener("click",append);
 }
+
+
+
+
+//Calculating The Expression
 function calculate() {
   let s = display.value;
   if (
@@ -37,10 +45,22 @@ function calculate() {
     document.querySelector(".equal").removeEventListener("click", calculate);
   } else {
     display.value = eval(display.value);
+    let dot=display.value;
+    if(dot.includes(".")){
+
+    }
+    else{
+      document.querySelector("#dot").addEventListener("click",append);
+    }
   }
-  document.querySelector("#dot").addEventListener("click",append);
+  
 }
 
+
+
+
+
+//Adding EventListners to Buttons
 let btns = document.querySelectorAll(".btns");
 btns.forEach((button) => {
   button.addEventListener("click", append);
